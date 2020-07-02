@@ -1,0 +1,22 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build --t meiraad/react-test -f ./client/Dockerfile.dev ./client
+script:
+  - docker run -e CI=true meiraad/react-test npm test -- --coverage
+
+after_success:
+  - docker build -t meiraad/multi-client ./client
+  - docker build -t meiraad/multi-nginx ./nginx
+  - docker build -t meiraad/multi-server ./server
+  - docker build -t meiraad/multi-worker ./worker
+
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push meiraad/multi-client
+  - docker push meiraad/multi-nginx
+  - docker push meiraad/multi-server
+  - docker push meiraad/multi-worker
+
+

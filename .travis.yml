@@ -14,9 +14,9 @@ after_success:
   - docker build -t meiraad/multi-worker ./worker
 
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push meiraad/multi-client
-  - docker push meiraad/multi-nginx
-  - docker push meiraad/multi-server
-  - docker push meiraad/multi-worker
+  - docker push meira/multi-client
+  - docker push meira/multi-nginx
+  - docker push meira/multi-server
+  - docker push meira/multi-worker
 
 

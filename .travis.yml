@@ -13,7 +13,7 @@ after_success:
   - docker build -t meira/multi-server ./server
   - docker build -t meira/multi-worker ./worker
 
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - echo "Meadl0986" | docker login -u "meira" --password-stdin
   - docker push meira/multi-client
   - docker push meira/multi-nginx
   - docker push meira/multi-server

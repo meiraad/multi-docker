@@ -5,6 +5,7 @@ RUN npm install
 COPY . .
 RUN npm run build
 
+#test comment
 FROM nginx
 EXPOSE 3000
 COPY ./nginx/defult.conf /etc/nginx/conf.d/default.conf
